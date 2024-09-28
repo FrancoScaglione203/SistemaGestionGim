@@ -38,6 +38,16 @@
                     <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
                 </p>
             </section>
+            <section class="col-md-4" aria-labelledby="hostingTitle">
+                <asp:GridView ID="dgvUsuarios" runat="server" DataKeyNames="Id"
+                    CssClass="table table-striped text-center" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
+                    <Columns>
+                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                        <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
+                    </Columns>
+                </asp:GridView>
+            </section>
         </div>
     </main>
 

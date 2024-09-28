@@ -12,7 +12,7 @@ namespace dominio
         public string Descrípcion { get; set; }
         public bool Maquinas { get; set; }
         public bool Seguimiento { get; set; }
-        public bool DescuentoClases { get; set; }
+        public int DescuentoClases { get; set; }
         public bool Locker { get; set; }
         public int Importe { get; set; }
     }
