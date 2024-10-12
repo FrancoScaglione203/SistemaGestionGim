@@ -31,27 +31,18 @@ namespace SistemaGestionGim
                 PerfilLink.Visible = true;
                 PagosLink.Visible = true;
             }
-            else
+
+            if (!dominio.Seguridad.esAdmin(Session["usuario"]))
             {
-                //Response.Redirect("Login.aspx", false);
+                CuponesLink.Visible = true;
             }
-
-            //if (dominio.Seguridad.esAdmin(Session["usuario"]))
-            //{
-            //    adminLink.Visible = true;
-            //}
-        }
-
-        protected void btnLoginSingin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("login.aspx");
         }
 
 
         protected void btnCerrar_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("default.aspx");
+            Response.Redirect("login.aspx");
         }
      
     }
