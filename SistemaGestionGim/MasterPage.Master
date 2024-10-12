@@ -33,10 +33,11 @@
                         <asp:HyperLink ID="ClasesLink" runat="server" CssClass="nav-item nav-link" NavigateUrl="Clases.aspx" Text="Clases" Visible="false" style="color: black;"></asp:HyperLink>
                         <asp:HyperLink ID="PerfilLink" runat="server" CssClass="nav-item nav-link" NavigateUrl="Perfil.aspx" Text="Perfil" Visible="false" style="color: black;"></asp:HyperLink>
                         <asp:HyperLink ID="PagosLink" runat="server" CssClass="nav-item nav-link" NavigateUrl="Pagos.aspx" Text="Pagos" Visible="false" style="color: black;"></asp:HyperLink>
+                        <asp:HyperLink ID="CuponesLink" runat="server" CssClass="nav-item nav-link" NavigateUrl="Cupones.aspx" Text="Cupones" Visible="false" style="color: black;"></asp:HyperLink>
 
                     </div>
                     <div class="navbar-nav ms-lg-4 ms-md-4">
-                        <a class="nav-item nav-link" href="login.aspx" style="color: black;">
+                        <a class="nav-item nav-link" style="color: black;">
                             <asp:Label ID="lblNomreUsuario" runat="server" Text=" " Visible="false"></asp:Label>
                         </a>
                         <% if (Session["usuario"] != null)
