@@ -39,6 +39,52 @@ namespace negocio
             }
         }
 
+        public int InsertarNuevo(Usuario nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("insertarNuevo"); // Asegúrate de que el procedimiento almacenado esté correctamente configurado
+                datos.setearParametro("@clave", nuevo.clave);
+                datos.setearParametro("@TipoUsuario", nuevo.tipoUsuario);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@Apellido", nuevo.Apellido);
+                datos.setearParametro("@Email", nuevo.Email);
+                datos.setearParametro("@Id_plan", nuevo.Id_plan); // Agregar el ID del plan
+
+                return datos.ejecutarAccionScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public bool ValidacionEmail(string email)
+        {
+            List<Usuario> lista = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            lista = listarUsuarios();
+
+            Usuario useremail = lista.Find(u => u.Email == email);
+
+            if (useremail == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
 
         public bool loguear(Usuario usuario)
         {

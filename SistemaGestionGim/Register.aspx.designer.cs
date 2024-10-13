@@ -11,7 +11,7 @@ namespace SistemaGestionGim
 {
 
 
-    public partial class Login
+    public partial class Register
     {
 
         /// <summary>
@@ -33,13 +33,49 @@ namespace SistemaGestionGim
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vEmail;
 
         /// <summary>
-        /// reEmail control.
+        /// string control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator reEmail;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator @string;
+
+        /// <summary>
+        /// txtApellido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+
+        /// <summary>
+        /// vApellido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vApellido;
+
+        /// <summary>
+        /// txtNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+
+        /// <summary>
+        /// vNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vNombre;
 
         /// <summary>
         /// txtClave control.
@@ -60,39 +96,48 @@ namespace SistemaGestionGim
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vClave;
 
         /// <summary>
-        /// ScriptManager1 control.
+        /// txtPlanSeleccionado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.TextBox txtPlanSeleccionado;
 
         /// <summary>
-        /// UpdatePanel1 control.
+        /// vPlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vPlan;
 
         /// <summary>
-        /// btnIngresar control.
+        /// hiddenFieldPlanId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresar;
+        protected global::System.Web.UI.WebControls.HiddenField hiddenFieldPlanId;
 
         /// <summary>
-        /// lblRegistro control.
+        /// outerRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegistro;
+        protected global::System.Web.UI.WebControls.Repeater outerRepeater;
+
+        /// <summary>
+        /// btnRegistrarse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRegistrarse;
     }
 }

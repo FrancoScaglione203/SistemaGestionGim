@@ -5,9 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-      <% if (Session["usuario"] == null)
-      {
-  %>
   <div class="row justify-content-center mt-4">
 
       <div class="col-5">
@@ -71,35 +68,12 @@
                   </ContentTemplate>
               </asp:UpdatePanel>
 
-              <a class="nav-item nav-link" href="signin.aspx">
+              <a class="nav-item nav-link" href="Register.aspx">
                   <asp:Label ID="lblRegistro" runat="server" CssClass="btn btn-light w-50 p-3" Text="Todavía no estoy registrado" />
               </a>
           </div>
       </div>
   </div>
-  <%}
-      else
-      {
-  %>
-
-  <div class="row justify-content-center mt-4">
-
-      <div class="col-5 text-center">
-          <h6 class="fw-bold my-3">PERFIL</h6>
-
-          <div class="row justify-content-center">
-
-             <div class="form-floating mb-3">
-                  <input readonly class="form-control-plaintext" id="fltEmail" value="<%= Email() %>">
-                  <label for="fltEmail">Email</label>
-              </div>
-              <asp:Button Text="Modificar Perfil" CssClass="btn btn-warning w-50 p-3 mt-4 mb-2" runat="server" ID="btnModificar" OnClick="btnModificar_Click" />
-
-          </div>
-      </div>
-  </div>
-
-  <%}%>
 
 
 </asp:Content>

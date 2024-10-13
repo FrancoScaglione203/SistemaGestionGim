@@ -30,12 +30,14 @@ namespace SistemaGestionGim
                 ClasesLink.Visible = true;
                 PerfilLink.Visible = true;
                 PagosLink.Visible = true;
+
+                if (!dominio.Seguridad.esAdmin(Session["usuario"]))
+                {
+                    CuponesLink.Visible = true;
+                }
             }
 
-            if (!dominio.Seguridad.esAdmin(Session["usuario"]))
-            {
-                CuponesLink.Visible = true;
-            }
+            
         }
 
 
