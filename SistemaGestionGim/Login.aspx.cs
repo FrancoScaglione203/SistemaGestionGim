@@ -11,6 +11,7 @@ namespace SistemaGestionGim
 {
     public partial class Login : System.Web.UI.Page
     {
+        public Plan Plan { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -36,9 +37,12 @@ namespace SistemaGestionGim
                 usuario = new Usuario();
                 usuario.Email = txtEmail.Text;
                 usuario.clave = txtClave.Text;
+                //Aca deberia ir el UsuarioById
+
 
                 if (negocio.loguear(usuario))
-                {
+                {                  
+                    usuario.plan = PlanById(usuario.Id_plan);
                     Session.Add("usuario", usuario);
                     string nombreUsuario = usuario.Nombre + " " + usuario.Apellido;
                     Session.Add("nombreUsuario", nombreUsuario);
@@ -61,10 +65,22 @@ namespace SistemaGestionGim
             }
         }
 
+
+
+        protected Plan PlanById(int planId)
+        {
+            PlanNegocio planNegocio = new PlanNegocio();
+
+            Plan = planNegocio.GetPlanById(planId);
+            return Plan;
+        }
+
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Login.aspx");
         }
+
+        
 
     }
 }
