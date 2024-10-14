@@ -9,6 +9,7 @@
         <Columns>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+            <asp:BoundField HeaderText="Email" DataField="Email" />
             <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
         </Columns>
     </asp:GridView>

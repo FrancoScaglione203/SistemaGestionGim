@@ -41,22 +41,33 @@ namespace SistemaGestionGim
 
                 if (!usuarioNegocio.ValidacionEmail(user.Email))
                 {
-                    int id = usuarioNegocio.InsertarNuevo(user);
-                    if (id == 0)
+                    if (txtClave.Text == txtClave2.Text)
                     {
-                        Response.Redirect("ErrorLog.aspx");
+                        int id = usuarioNegocio.InsertarNuevo(user);
+                        if (id == 0)
+                        {
+                            Response.Redirect("ErrorLog.aspx");
+
+                        }
+                        else
+                        {
+                            Session["validacionRegister"] = null;
+                            Response.Redirect("RegisterExitoso.aspx");
+                        }
                     }
-                    else
+                    else 
                     {
-                        Response.Redirect("RegisterExitoso.aspx");
+                        String errorClave = "Las contraseñas no coinciden";
+                        Session["validacionRegister"] = errorClave;
+                        Response.Redirect("Register.aspx");
                     }
                 }
                 else
                 {
-                    //Session.Add("usuario", user);
-                    Response.Redirect("ErrorLog.aspx");
-                }
-
+                    String errorMail = "Ya existe un usuario con esa direccion de email";
+                    Session["validacionRegister"] = errorMail;
+                    Response.Redirect("Register.aspx");
+                }  
 
             }
             catch (Exception ex)

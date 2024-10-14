@@ -96,6 +96,24 @@ namespace SistemaGestionGim
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vClave;
 
         /// <summary>
+        /// txtClave2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtClave2;
+
+        /// <summary>
+        /// vClave2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vClave2;
+
+        /// <summary>
         /// txtPlanSeleccionado control.
         /// </summary>
         /// <remarks>
