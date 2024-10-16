@@ -20,6 +20,26 @@ namespace SistemaGestionGim
                 listaPlanes = planNegocio.listarPlanes();
                 outerRepeater.DataSource = listaPlanes;
                 outerRepeater.DataBind();
+
+                if (Session["Email"] != null)
+                    txtEmail.Text = Session["Email"].ToString();
+                if (Session["Apellido"] != null)
+                    txtApellido.Text = Session["Apellido"].ToString();
+                if (Session["Nombre"] != null)
+                    txtNombre.Text = Session["Nombre"].ToString();
+                if (Session["PlanSeleccionado"] != null)
+                    txtPlanSeleccionado.Text = Session["PlanSeleccionado"].ToString();
+                if (Session["PlanId"] != null)
+                    hiddenFieldPlanId.Value = Session["PlanId"].ToString();
+                if (Session["Clave"] != null)
+                    txtClave.Text = Session["Clave"].ToString();
+                if (Session["Clave2"] != null)
+                    txtClave2.Text = Session["Clave2"].ToString();
+
+
+
+                Session["Clave"] = txtClave.Text;
+                Session["Clave2"] = txtClave2.Text;
             }
             
         }
@@ -52,6 +72,11 @@ namespace SistemaGestionGim
                         else
                         {
                             Session["validacionRegister"] = null;
+                            Session["Email"] = null;
+                            Session["Apellido"] = null;
+                            Session["Nombre"] = null;
+                            Session["PlanSeleccionado"] = null;
+                            Session["PlanId"] = null;
                             Response.Redirect("RegisterExitoso.aspx");
                         }
                     }
@@ -59,6 +84,13 @@ namespace SistemaGestionGim
                     {
                         String errorClave = "Las contraseñas no coinciden";
                         Session["validacionRegister"] = errorClave;
+                        Session["Email"] = txtEmail.Text;
+                        Session["Apellido"] = txtApellido.Text;
+                        Session["Nombre"] = txtNombre.Text;
+                        Session["Clave"] = txtClave.Text;
+                        Session["Clave2"] = txtClave2.Text;
+                        Session["PlanSeleccionado"] = txtPlanSeleccionado.Text;
+                        Session["PlanId"] = hiddenFieldPlanId.Value;
                         Response.Redirect("Register.aspx");
                     }
                 }
@@ -66,6 +98,13 @@ namespace SistemaGestionGim
                 {
                     String errorMail = "Ya existe un usuario con esa direccion de email";
                     Session["validacionRegister"] = errorMail;
+                    Session["Email"] = txtEmail.Text;
+                    Session["Apellido"] = txtApellido.Text;
+                    Session["Nombre"] = txtNombre.Text;
+                    Session["Clave"] = txtClave.Text;
+                    Session["Clave2"] = txtClave2.Text;
+                    Session["PlanSeleccionado"] = txtPlanSeleccionado.Text;
+                    Session["PlanId"] = hiddenFieldPlanId.Value;
                     Response.Redirect("Register.aspx");
                 }  
 

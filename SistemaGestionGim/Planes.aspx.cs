@@ -56,11 +56,25 @@ namespace SistemaGestionGim
 
         protected void btnCambiarPlan_Click(object sender, EventArgs e)
         {
-            panelNuevoPlan.Visible = true;
+
+            Usuario user = new Usuario();
+            user = (Usuario)Session["usuario"];
 
             Button btn = (Button)sender;
             int idPlan = Convert.ToInt32(btn.CommandArgument);
+
+            if (idPlan == user.Id_plan) 
+            {
+                String errorPlan = "Seleccionaste tu plan actual";
+                Session["validacionPlan"] = errorPlan;
+
+                Response.Redirect("Planes.aspx");
+            }
+
+
             Session.Add("idPlanNuevo", idPlan);
+            lblValidacion.Visible = false;
+            panelNuevoPlan.Visible = true;
 
             PlanNegocio negocio = new PlanNegocio();
             Plan plan = new Plan();

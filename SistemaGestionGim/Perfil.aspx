@@ -51,7 +51,8 @@
 
                 <asp:Button Text="Modificar Perfil" CssClass="btn btn-primary w-50 p-3 mt-4 mb-2" runat="server" ID="btnModificarPerfil" OnClick="btnModificarPerfil_Click" />
                 <asp:Button Text="Cancelar Suscripción/Usuario" CssClass="btn btn-danger w-50 p-3 mt-2" runat="server" ID="btnCancelarUsuario" OnClick="btnCancelarUsuario_Click" />
-
+                <asp:Button Text="Confirmar baja" CssClass="btn btn-secondary w-50 p-3 mt-2" runat="server" ID="btnConfirmarCancelacion" OnClick="btnConfirmarCancelacion_Click" Style="display: none;" />
+                <asp:Button Text="Cancelar" CssClass="btn btn-secondary w-50 p-3 mt-2" runat="server" ID="btnCancelar2" OnClick="btnCancelar2_Click" Style="display: none;" />
                 <!-- Botones ocultos de Cancelar y Confirmar cambios -->
                 <asp:Button Text="Cancelar" CssClass="btn btn-secondary w-50 p-3 mt-2" runat="server" ID="btnCancelar" OnClick="btnCancelar_Click" Style="display: none;" />
                 <asp:Button Text="Confirmar Cambios" CssClass="btn btn-success w-50 p-3 mt-2" runat="server" ID="btnConfirmarCambios" OnClick="btnConfirmarCambios_Click" Style="display: none;" />
