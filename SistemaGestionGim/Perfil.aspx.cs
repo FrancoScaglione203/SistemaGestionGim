@@ -41,11 +41,25 @@ namespace SistemaGestionGim
                     Usuario usuarioLogueado = (Usuario)Session["usuario"];
 
                     // Ahora puedes acceder a las propiedades del usuarioLogueado
-                    txtEmail.Text = usuarioLogueado.Email;
-                    txtApellido.Text = usuarioLogueado.Apellido;
-                    txtNombre.Text = usuarioLogueado.Nombre;
-                    txtPassword.Attributes["value"] = usuarioLogueado.clave;
-                    txtConfirmarPassword.Attributes["value"] = usuarioLogueado.clave;
+                    
+                    
+                    if (Session["validacionModificacion"] != null)
+                    {
+                        txtConfirmarPassword.Attributes["value"] = (String)Session["Clave2"];
+                        txtEmail.Attributes["value"] = (String)Session["Email"];
+                        txtNombre.Attributes["value"] = (String)Session["Nombre"];
+                        txtApellido.Attributes["value"] = (String)Session["Apellido"];
+                        txtPassword.Attributes["value"] = (String)Session["Clave"];
+
+                    }
+                    else
+                    { 
+                        txtConfirmarPassword.Attributes["value"] = usuarioLogueado.clave;
+                        txtEmail.Attributes["value"] = usuarioLogueado.Email;
+                        txtNombre.Attributes["value"] = usuarioLogueado.Nombre;
+                        txtApellido.Attributes["value"] = usuarioLogueado.Apellido;
+                        txtPassword.Attributes["value"] = usuarioLogueado.clave;
+                    }
                     // Y así con las otras propiedades que necesites
 
                     // Asignar los datos del plan a los controles de la tarjeta
@@ -92,8 +106,6 @@ namespace SistemaGestionGim
                 Email = txtEmail.Text,
                 Nombre = txtNombre.Text,
                 Apellido = txtApellido.Text,
-                // Aquí asigna el plan seleccionado si corresponde
-                //Activo = txtActivo.Text == "Activo"
             };
 
             //usuarioNegocio.ActualizarUsuario(usuario);
@@ -102,12 +114,33 @@ namespace SistemaGestionGim
 
         protected void btnCancelarUsuario_Click(object sender, EventArgs e)
         {
-
+            btnModificarPerfil.Style["display"] = "none";
+            btnConfirmarCancelacion.Style["display"] = "inline-block";
+            btnCancelarUsuario.Style["display"] = "none";
+            btnCancelar2.Style["display"] = "inline-block";
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
+
             Response.Redirect("Perfil.aspx");
+        }
+
+        protected void btnCancelar2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Perfil.aspx");
+        }
+
+
+        protected void btnConfirmarCancelacion_Click(object sender, EventArgs e) 
+        {
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            Usuario usuarioLogueado = (Usuario)Session["usuario"];
+
+            usuarioLogueado.Activo = false;
+            usuarioNegocio.Modificar(usuarioLogueado);
+            Response.Redirect("Login.aspx");
+
         }
 
         protected void btnConfirmarCambios_Click(object sender, EventArgs e)
@@ -130,24 +163,52 @@ namespace SistemaGestionGim
                 Activo = true
             };
 
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
 
-            if (txtPassword.Text == txtConfirmarPassword.Text)
+            if (!(usuarioNegocio.UsuarioConEmail(usuarioActualizado)))
             {
+                Session["Email"] = null;
+                if (txtPassword.Text == txtConfirmarPassword.Text)
+                {
 
-                // Aquí llama al método para modificar el usuario en la base de datos
-                UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
-                usuarioNegocio.Modificar(usuarioActualizado); // Asegúrate de que este método esté implementado correctamente
+                    // Aquí llama al método para modificar el usuario en la base de datos
 
-                Session["usuario"] = usuarioActualizado;
-                Session["validacionModificacion"] = null;
-                Response.Redirect("Perfil.aspx");
+                    usuarioNegocio.Modificar(usuarioActualizado); // Asegúrate de que este método esté implementado correctamente
+
+                    Session["usuario"] = usuarioActualizado;
+                    Session["Nombre"] = null;
+                    Session["Apellido"] = null;
+                    Session["Clave2"] = null;
+                    Session["Clave"] = null;
+                    Session["Email"] = null;
+                    Session["validacionModificacion"] = null;
+                    Response.Redirect("Perfil.aspx");
+                }
+                else
+                {
+                    String errorClave = "Las contraseñas no coinciden";
+                    Session["Nombre"] = txtNombre.Text;
+                    Session["Apellido"] = txtApellido.Text;
+                    Session["Clave2"] = txtConfirmarPassword.Text;
+                    Session["Clave"] = txtPassword.Text;
+                    Session["Email"] = txtEmail.Text;
+                    Session["validacionModificacion"] = errorClave;
+                    Response.Redirect("Perfil.aspx");
+                }
             }
             else
             {
-                String errorClave = "Las contraseñas no coinciden";
-                Session["validacionModificacion"] = errorClave;
+                String errorEmail = "Ya existe usuario con esa direccion de email";
+                Session["Nombre"] = txtNombre.Text;
+                Session["Apellido"] = txtApellido.Text;
+                Session["Clave2"] = txtConfirmarPassword.Text;
+                Session["Clave"] = txtPassword.Text;
+                Session["Email"] = txtEmail.Text;
+                Session["validacionModificacion"] = errorEmail;
                 Response.Redirect("Perfil.aspx");
             }
+
+            
 
 
         }

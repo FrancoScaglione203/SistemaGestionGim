@@ -116,8 +116,8 @@ namespace negocio
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Apellido", nuevo.Apellido);
                 datos.setearParametro("@Email", nuevo.Email);
-                datos.setearParametro("@Id_plan", nuevo.Id_plan); // Si es necesario agregar el ID del plan
-                                                                  // Incluye aquí cualquier otro parámetro que necesites para modificar
+                datos.setearParametro("@Id_plan", nuevo.Id_plan);
+                datos.setearParametro("@Activo", nuevo.Activo);
 
                 datos.ejecutarAccion(); // Ejecuta la acción sin retorno
             }
@@ -133,10 +133,6 @@ namespace negocio
 
 
 
-
-
-
-
         public bool ValidacionEmail(string email)
         {
             List<Usuario> lista = new List<Usuario>();
@@ -145,6 +141,26 @@ namespace negocio
             lista = listarUsuarios();
 
             Usuario useremail = lista.Find(u => u.Email == email);
+
+            if (useremail == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
+        public bool UsuarioConEmail(Usuario user)
+        {
+            List<Usuario> lista = new List<Usuario>();
+            AccesoDatos datos = new AccesoDatos();
+
+            lista = listarUsuarios();
+
+            Usuario useremail = lista.Find(u => u.Email == user.Email && u.Id != user.Id && u.Activo == true);
 
             if (useremail == null)
             {

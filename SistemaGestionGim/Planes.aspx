@@ -90,8 +90,14 @@
                 </div>
 
                 <!-- Botón para confirmar el cambio de plan -->
-                <asp:Button ID="btnConfirmarCambio" runat="server" Text="Confirmar cambio de plan" 
+                <asp:Button ID="btnConfirmarCambio" runat="server" Text="Confirmar cambio de plan"
                     CssClass="btn btn-success mt-3" Visible="false" OnClick="btnConfirmarCambio_Click" />
+
+                    <% if ((Session["validacionPlan"] != null))
+                        { %>
+                    <asp:label ID="lblValidacion" runat="server" class="text-danger form-label" Visible="true" ><%= Session["validacionPlan"] %></asp:label>
+                    <% } %>
+
             </div>
         </div>
     </div>
