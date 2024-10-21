@@ -14,6 +14,8 @@ namespace SistemaGestionGim
         public Plan Plan { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            ClaseNegocio claseNegocio = new ClaseNegocio();
+            claseNegocio.ActualizarEstadoClases();
 
         }
 
