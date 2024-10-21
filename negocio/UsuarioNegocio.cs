@@ -83,7 +83,7 @@ namespace negocio
 
             try
             {
-                datos.setearProcedimiento("insertarNuevo"); // Asegúrate de que el procedimiento almacenado esté correctamente configurado
+                datos.setearProcedimiento("insertarNuevoUsuario"); // Asegúrate de que el procedimiento almacenado esté correctamente configurado
                 datos.setearParametro("@clave", nuevo.clave);
                 datos.setearParametro("@TipoUsuario", nuevo.tipoUsuario);
                 datos.setearParametro("@Nombre", nuevo.Nombre);

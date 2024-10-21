@@ -34,6 +34,7 @@ namespace SistemaGestionGim
                 if (!dominio.Seguridad.esAdmin(Session["usuario"]))
                 {
                     CuponesLink.Visible = true;
+                    ClasesLink.NavigateUrl = "ClasesAdmin.aspx";
                 }
             }
 
