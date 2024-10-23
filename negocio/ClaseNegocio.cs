@@ -48,6 +48,43 @@ namespace negocio
             }
         }
 
+        public List<Clase> ListarClasesPorUsuario(int idUsuario)
+        {
+            List<Clase> lista = new List<Clase>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Configurar el procedimiento almacenado
+                datos.setearProcedimiento("sp_ListarClasesPorUsuario");
+                datos.setearParametro("@ID_Usuario", idUsuario);
+
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Clase aux = new Clase();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.FechaHorario = (DateTime)datos.Lector["FechaHorario"];
+                    aux.Capacidad = (int)datos.Lector["Capacidad"];
+                    aux.Importe = (int)datos.Lector["Importe"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void ActualizarEstadoClases() 
         {
             AccesoDatos datos = new AccesoDatos();
