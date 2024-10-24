@@ -31,7 +31,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Botón para mostrar el formulario de agregar clase -->
+    
     <div class="container">
+        <div>
+    <asp:Button Text="Agregar clase" CssClass="btn btn-primary w-50 p-3 mt-4 mb-2" runat="server" ID="btnAgregarClase" OnClick="btnAgregarClase_Click" />
+</div>
         <h2 class="mt-4">Administrar Clases</h2>
         <div class="row">
             <!-- Repeater para mostrar las tarjetas de las clases -->
@@ -64,10 +70,7 @@
             </asp:Repeater>
         </div>
 
-        <!-- Botón para mostrar el formulario de agregar clase -->
-        <div>
-            <asp:Button Text="Agregar clase" CssClass="btn btn-primary w-50 p-3 mt-4 mb-2" runat="server" ID="btnAgregarClase" OnClick="btnAgregarClase_Click" />
-        </div>
+
 
 
         <!-- Formulario para agregar/editar clase, inicialmente invisible -->
@@ -104,38 +107,38 @@
                         <label for="txtClave2" class="text-danger form-label"><%= Session["validacionClase"] %></label>
                         <%}%>
                     </div>
-            </div>
-    </div>
-    </asp:Panel>
-
-        <!-- Panel de confirmación de eliminación de clase, inicialmente invisible -->
-    <asp:Panel ID="panelConfirmarEliminar" runat="server" Visible="false">
-        <div class="card my-4">
-            <div class="card-body">
-                <h5 class="card-title">¿Estás seguro de que deseas eliminar esta clase?</h5>
-                <p>
-                    Descripción:
-                        <asp:Label ID="lblDescripcionEliminar" runat="server" />
-                </p>
-                <p>
-                    Fecha y Hora:
-                        <asp:Label ID="lblFechaHoraEliminar" runat="server" />
-                </p>
-                <p>
-                    Capacidad:
-                        <asp:Label ID="lblCapacidadEliminar" runat="server" />
-                </p>
-                <p>
-                    Importe:
-                        <asp:Label ID="lblImporteEliminar" runat="server" />
-                </p>
-
-                <div class="mt-3">
-                    <asp:Button Text="Confirmar Eliminar" CssClass="btn btn-danger w-50" runat="server" ID="btnConfirmarEliminar" OnClick="btnConfirmarEliminar_Click" />
-                    <asp:Button Text="Cancelar" CssClass="btn btn-secondary w-50 mt-2" runat="server" ID="btnCancelarEliminar" OnClick="btnCancelarEliminar_Click" />
                 </div>
             </div>
-        </div>
-    </asp:Panel>
+        </asp:Panel>
+
+        <!-- Panel de confirmación de eliminación de clase, inicialmente invisible -->
+        <asp:Panel ID="panelConfirmarEliminar" runat="server" Visible="false">
+            <div class="card my-4">
+                <div class="card-body">
+                    <h5 class="card-title">¿Estás seguro de que deseas eliminar esta clase?</h5>
+                    <p>
+                        Descripción:
+                        <asp:Label ID="lblDescripcionEliminar" runat="server" />
+                    </p>
+                    <p>
+                        Fecha y Hora:
+                        <asp:Label ID="lblFechaHoraEliminar" runat="server" />
+                    </p>
+                    <p>
+                        Capacidad:
+                        <asp:Label ID="lblCapacidadEliminar" runat="server" />
+                    </p>
+                    <p>
+                        Importe:
+                        <asp:Label ID="lblImporteEliminar" runat="server" />
+                    </p>
+
+                    <div class="mt-3">
+                        <asp:Button Text="Confirmar Eliminar" CssClass="btn btn-danger w-50" runat="server" ID="btnConfirmarEliminar" OnClick="btnConfirmarEliminar_Click" />
+                        <asp:Button Text="Cancelar" CssClass="btn btn-secondary w-50 mt-2" runat="server" ID="btnCancelarEliminar" OnClick="btnCancelarEliminar_Click" />
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
     </div>
 </asp:Content>
