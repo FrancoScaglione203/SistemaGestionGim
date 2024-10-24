@@ -15,15 +15,6 @@ namespace SistemaGestionGim
     {
 
         /// <summary>
-        /// repeaterClases control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterClases;
-
-        /// <summary>
         /// btnAgregarClase control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace SistemaGestionGim
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarClase;
+
+        /// <summary>
+        /// repeaterClases control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterClases;
 
         /// <summary>
         /// panelFormularioClase control.

@@ -13,10 +13,18 @@ namespace SistemaGestionGim
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+
+            if (Session["usuario"] != null)
             {
-                CargarClasesDisponibles();
-                CargarClasesInscriptas();
+                if (!IsPostBack)
+                {
+                    CargarClasesDisponibles();
+                    CargarClasesInscriptas();
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
             }
         }
 
