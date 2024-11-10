@@ -44,6 +44,40 @@ namespace negocio
             }
         }
 
+        public List<Cupon> listarTodosCupones()
+        {
+            List<Cupon> lista = new List<Cupon>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT Id, Codigo, Descuento, FechaVencimiento, Activo FROM Cupones;";
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Cupon aux = new Cupon();
+                    aux.Id = (int)datos.Lector["ID"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Descuento = (int)datos.Lector["Descuento"];
+                    aux.FechaVencimiento = (DateTime)datos.Lector["FechaVencimiento"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public int InsertarNuevo(Cupon nuevoCupon)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -138,6 +172,39 @@ namespace negocio
             finally
             {
                 // Cerrar la conexión a la base de datos
+                datos.cerrarConexion();
+            }
+        }
+
+        public Cupon CuponById(int cuponId)
+        {
+            Cupon cupon = null;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT Id, Codigo, Descuento, FechaVencimiento, Activo FROM Cupones WHERE Id = @CuponId";
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@CuponId", cuponId);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    cupon = new Cupon();
+                    cupon.Id = (int)datos.Lector["Id"];
+                    cupon.Codigo = datos.Lector["Codigo"] as string;
+                    cupon.Descuento = (int)datos.Lector["Descuento"];
+                    cupon.FechaVencimiento = (DateTime)datos.Lector["FechaVencimiento"];
+                    cupon.Activo = (bool)datos.Lector["Activo"];
+                }
+
+                return cupon;
+            }
+            catch (Exception ex)
+            {
+                throw ex; // Considera registrar el error en lugar de solo lanzar
+            }
+            finally
+            {
                 datos.cerrarConexion();
             }
         }

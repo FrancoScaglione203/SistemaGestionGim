@@ -46,7 +46,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT Id, Nombre, Apellido, Email, Clave, TipoUsuario, Id_tipoUsuario, Id_plan, Estado FROM Usuarios WHERE Id = @UsuarioId";
+                string consulta = "SELECT Id, Nombre, Apellido, Email, Clave, TipoUsuario, Id_plan, Activo FROM Usuarios WHERE Id = @UsuarioId";
                 datos.setearConsulta(consulta);
                 datos.setearParametro("@UsuarioId", usuarioId);
                 datos.ejecutarLectura();
