@@ -59,9 +59,7 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
-        }
-
-        
+        }    
 
         public bool UsuarioYaInscripto(int idClase, int idUsuario)
         {
@@ -109,6 +107,52 @@ namespace negocio
                 int filasAfectadas = datos.ejecutarAccionScalar();
 
                 return filasAfectadas > 0; // Devuelve true si se actualizó al menos una fila
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<InscripcionClase> listarInscripcionesClases()
+        {
+            List<InscripcionClase> lista = new List<InscripcionClase>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT ID, ID_Usuario, ID_Clase, ID_Plan, DescuentoPlan, Cancelado FROM InscripcionesClases";
+                datos.setearConsulta(consulta);
+
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    InscripcionClase aux = new InscripcionClase();
+
+                    aux.Id = (int)datos.Lector["ID"];
+                    aux.Id_usuario = (int)datos.Lector["ID_Usuario"];
+                    aux.Id_clase = (int)datos.Lector["ID_Clase"];
+                    aux.Id_plan = (int)datos.Lector["ID_Plan"];
+                    aux.DescuentoPlan = (int)datos.Lector["DescuentoPlan"];
+                    aux.Cancelado = (bool)datos.Lector["Cancelado"];
+
+        
+                    ClaseNegocio claseNegocio = new ClaseNegocio();
+                    aux.clase = claseNegocio.ClaseById(aux.Id_clase);
+
+                    UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                    aux.usuario = usuarioNegocio.UsuarioById(aux.Id_usuario);
+
+                    PlanNegocio planNegocio = new PlanNegocio();
+                    aux.plan = planNegocio.GetPlanById(aux.Id_plan);
+
+                    lista.Add(aux);
+                }
+
+                return lista;
             }
             catch (Exception ex)
             {

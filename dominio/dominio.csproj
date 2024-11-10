@@ -45,7 +45,7 @@
     <Compile Include="Cupon.cs" />
     <Compile Include="Imagen.cs" />
     <Compile Include="InscripcionClase.cs" />
-    <Compile Include="PagosMensuales.cs" />
+    <Compile Include="Pago.cs" />
     <Compile Include="Plan.cs" />
     <Compile Include="Seguridad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

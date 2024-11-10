@@ -10,7 +10,7 @@ namespace dominio
     {
         public int Id { get; set; }
         public DateTime FechaHorario { get; set; }
-        public int Capacidad { get; set; } 
+        public int Capacidad { get; set; }
         public int Importe { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }

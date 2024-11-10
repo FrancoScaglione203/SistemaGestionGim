@@ -27,5 +27,10 @@ namespace dominio
         public int Id_plan { get; set; }
 
         public bool Activo { get; set; }
+
+        public string NombreCompleto
+        {
+            get { return $"{Nombre} {Apellido}"; }
+        }
     }
 }
