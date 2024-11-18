@@ -50,6 +50,7 @@ namespace SistemaGestionGim
             {
                 Usuario user = new Usuario();
                 UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+                PagoNegocio pagoNegocio = new PagoNegocio();
                 
                 user.Email = txtEmail.Text;
                 user.clave = txtClave.Text;
@@ -64,6 +65,8 @@ namespace SistemaGestionGim
                     if (txtClave.Text == txtClave2.Text)
                     {
                         int id = usuarioNegocio.InsertarNuevo(user);
+                        pagoNegocio.GeneracionPagoMensualInscripcion(id, user.Id_plan);
+
                         if (id == 0)
                         {
                             Response.Redirect("ErrorLog.aspx");
