@@ -172,7 +172,8 @@ namespace negocio
                 {
                     Pago aux = new Pago();
 
-                    aux.Id_cupon = (int)datos.Lector["ID_Cupon"];
+                    aux.Id_cupon = datos.Lector["ID_Cupon"] != DBNull.Value ? (int)datos.Lector["ID_Cupon"] : 0;
+                   // aux.Id_cupon = (int)datos.Lector["ID_Cupon"];
                     aux.Id_usuario = (int)datos.Lector["ID_Usuario"];
                     aux.Importe = (int)datos.Lector["Importe"];
                     aux.FechaPago = (DateTime)datos.Lector["FechaPago"];
@@ -207,7 +208,7 @@ namespace negocio
                 {
                     Pago aux = new Pago();
 
-                    aux.Id_cupon = (int)datos.Lector["ID_Cupon"];
+                    aux.Id_cupon = datos.Lector["ID_Cupon"] != DBNull.Value ? (int)datos.Lector["ID_Cupon"] : 0;
                     aux.Id_usuario = (int)datos.Lector["ID_Usuario"];
                     aux.Importe = (int)datos.Lector["Importe"];
                     aux.FechaPago = (DateTime)datos.Lector["FechaPago"];
@@ -309,6 +310,207 @@ namespace negocio
             }
         }
 
+
+        public bool YaGeneradoClases(int idInscripcion) 
+        {
+            List<Pago> listaPagos = new List<Pago>();
+            listaPagos = ListarPagosClases();
+
+            bool validacion = listaPagos.Any(pago => pago.Id_inscripcionClase == idInscripcion);
+            return validacion;
+        }
+
+
+        public void GeneracionPagosClases()
+        {
+            InscripcionClaseNegocio inscripcionClaseNegocio = new InscripcionClaseNegocio();
+            List<InscripcionClase> listaInscripciones = new List<InscripcionClase>();
+            listaInscripciones = inscripcionClaseNegocio.listarInscripcionesClases();
+
+            foreach (InscripcionClase inscripcionClase in listaInscripciones)
+            {
+                if(!YaGeneradoClases(inscripcionClase.Id)) 
+                { 
+                    if(inscripcionClase.clase.FechaHorario < DateTime.Now.Date)
+                    {
+                        int descuento = inscripcionClase.clase.Importe * inscripcionClase.DescuentoPlan / 100;
+                        Pago nuevoPago = new Pago()
+                        {
+                            Mes = 0,
+                            Anio = 0,
+                            Id_cupon = 0,
+                            Id_usuario = inscripcionClase.Id_usuario,
+                            Id_inscripcionClase = inscripcionClase.Id,
+                            FechaPago = new DateTime(9999, 9, 9),
+                            Importe = inscripcionClase.clase.Importe - descuento,
+                            Pagado = false
+                        };
+
+                        InsertarNuevoPago(nuevoPago);
+                        return;
+                    }
+                }
+            }
+        }
+
+
+
+
+        public bool YaGeneradoMensuales(int mes, int anio)
+        {
+            List<Pago> listaPagos = new List<Pago>();
+            listaPagos = ListarPagosMensuales();
+
+            bool validacion = listaPagos.Any(pago => pago.Mes == mes && pago.Anio == anio);
+            return validacion;
+        }
+
+        public List<Usuario> CargarPlanes(List<Usuario> listaUsuarios)
+        {
+            PlanNegocio planNegocio = new PlanNegocio();
+            foreach (Usuario usuario in listaUsuarios)
+            {
+                usuario.plan = planNegocio.GetPlanById(usuario.Id_plan);
+            }
+            
+            return listaUsuarios;
+        }
+
+
+        public void GeneracionPagoMensualInscripcion(int idUsuario, int idPlan) 
+        {
+            List<Pago> listaPagos = new List<Pago>();
+            listaPagos = ListarPagosMensuales();
+            PlanNegocio planNegocio = new PlanNegocio();
+            Plan plan = planNegocio.GetPlanById(idPlan);
+
+            if(DateTime.Now.Day <= 15)
+            {
+                Pago nuevoPago = new Pago()
+                {
+                    Mes = DateTime.Now.Month,
+                    Anio = DateTime.Now.Year,
+                    Id_cupon = 0,
+                    Id_usuario = idUsuario,
+                    Id_inscripcionClase = 0,
+                    FechaPago = new DateTime(9999, 9, 9),
+                    Importe = plan.Importe,
+                    Pagado = false
+                };
+                InsertarNuevoPago(nuevoPago);
+            }
+        }
+
+        public void GeneracionPagosMensuales()
+        {
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            listaUsuarios = usuarioNegocio.listarUsuarios();
+            listaUsuarios = CargarPlanes(listaUsuarios);
+
+            if (!YaGeneradoMensuales(DateTime.Now.Month, DateTime.Now.Year)) 
+            {
+                foreach (Usuario usuario in listaUsuarios) 
+                {
+                    Pago nuevoPago = new Pago()
+                    {
+                        Mes = DateTime.Now.Month,
+                        Anio = DateTime.Now.Year,
+                        Id_cupon = 0,
+                        Id_usuario = usuario.Id,
+                        Id_inscripcionClase = 0,
+                        FechaPago = new DateTime(9999, 9, 9),
+                        Importe = usuario.plan.Importe,
+                        Pagado = false
+                    };
+                    InsertarNuevoPago(nuevoPago);
+                }
+
+            }
+        }
+
+
+
+        public void InsertarNuevoPago(Pago nuevoPago)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                // Configurar el procedimiento almacenado.
+                datos.setearProcedimiento("insertarNuevoPago");
+
+                // Asignar los parámetros.
+                datos.setearParametro("@Mes", nuevoPago.Mes == 0 ? (object)DBNull.Value : nuevoPago.Mes);
+                datos.setearParametro("@Anio", nuevoPago.Anio == 0 ? (object)DBNull.Value : nuevoPago.Anio);
+                datos.setearParametro("@ID_Cupon", nuevoPago.Id_cupon == 0 ? (object)DBNull.Value : nuevoPago.Id_cupon);
+                datos.setearParametro("@ID_Usuario", nuevoPago.Id_usuario);
+                datos.setearParametro("@Importe", nuevoPago.Importe);
+                datos.setearParametro("@FechaPago", nuevoPago.FechaPago == default(DateTime) ? (object)DBNull.Value : nuevoPago.FechaPago);
+                datos.setearParametro("@ID_InscripcionClase", nuevoPago.Id_inscripcionClase == 0 ? (object)DBNull.Value : nuevoPago.Id_inscripcionClase);
+                datos.setearParametro("@Pagado", nuevoPago.Pagado);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+
+        public void PagarMes(Pago nuevoPago, int importeFinal)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("PagarMes"); // Asegúrate de que el procedimiento almacenado esté correctamente configurado
+                datos.setearParametro("@Mes", (object)nuevoPago.Mes ?? DBNull.Value); // Si Mes es null, se usa DBNull.Value
+                datos.setearParametro("@Anio", (object)nuevoPago.Anio ?? DBNull.Value); // Si Anio es null, se usa DBNull.Value                
+                datos.setearParametro("@ID_Usuario", nuevoPago.Id_usuario); // ID_Usuario no puede ser null, ya que es NOT NULL en la DB
+                datos.setearParametro("@ImporteFinal", importeFinal);                
+                
+                datos.ejecutarAccion(); // Ejecuta la acción sin retorno
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar el pago", ex); // Manejo de excepciones
+            }
+            finally
+            {
+                datos.cerrarConexion(); // Asegúrate de cerrar la conexión
+            }
+        }
+
+        public void PagarClase(Pago nuevoPago, int importeFinal)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("PagarClase"); // Asegúrate de que el procedimiento almacenado esté correctamente configurado
+                datos.setearParametro("@ID_InscripcionClase",nuevoPago.Id_inscripcionClase); // Si Mes es null, se usa DBNull.Value         
+                datos.setearParametro("@ID_Usuario", nuevoPago.Id_usuario); // ID_Usuario no puede ser null, ya que es NOT NULL en la DB
+                datos.setearParametro("@ImporteFinal", importeFinal);
+
+                datos.ejecutarAccion(); // Ejecuta la acción sin retorno
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar el pago", ex); // Manejo de excepciones
+            }
+            finally
+            {
+                datos.cerrarConexion(); // Asegúrate de cerrar la conexión
+            }
+        }
 
     }
 }

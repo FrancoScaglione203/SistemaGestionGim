@@ -18,6 +18,10 @@ namespace SistemaGestionGim
             claseNegocio.ActualizarEstadoClases();
             CuponNegocio cuponNegocio = new CuponNegocio();
             cuponNegocio.ActualizarEstadoCupones();
+            PagoNegocio pagoNegocio = new PagoNegocio();
+            pagoNegocio.GeneracionPagosClases();
+            pagoNegocio.GeneracionPagosMensuales();
+
         }
 
         public String Email()

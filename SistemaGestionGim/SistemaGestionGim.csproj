@@ -102,6 +102,7 @@
     <Content Include="About.aspx" />
     <Content Include="Clases.aspx" />
     <Content Include="ClasesAdmin.aspx" />
+    <Content Include="ConfirmacionPago.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -126,6 +127,7 @@
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
     <Content Include="Pagos.aspx" />
+    <Content Include="PagosCliente.aspx" />
     <Content Include="Perfil.aspx" />
     <Content Include="Planes.aspx" />
     <Content Include="Register.aspx" />
@@ -214,6 +216,13 @@
     <Compile Include="ClasesAdmin.aspx.designer.cs">
       <DependentUpon>ClasesAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmacionPago.aspx.cs">
+      <DependentUpon>ConfirmacionPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmacionPago.aspx.designer.cs">
+      <DependentUpon>ConfirmacionPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,6 +267,13 @@
     </Compile>
     <Compile Include="Pagos.aspx.designer.cs">
       <DependentUpon>Pagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagosCliente.aspx.cs">
+      <DependentUpon>PagosCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagosCliente.aspx.designer.cs">
+      <DependentUpon>PagosCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Perfil.aspx.cs">
       <DependentUpon>Perfil.aspx</DependentUpon>
