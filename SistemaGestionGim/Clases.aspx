@@ -31,17 +31,17 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-                    
+
         <h2 class="mt-4">Clases Disponibles</h2>
-                <div>
-    <% if ((Session["validacionInscripcion"] != null))
-        { %>
-    <label for="txtClave2" class="text-danger form-label"><%= Session["validacionInscripcion"] %></label>
-    <% } %>
-</div>
+        <div>
+            <% if ((Session["validacionInscripcion"] != null))
+                { %>
+            <label for="txtClave2" class="text-danger form-label"><%= Session["validacionInscripcion"] %></label>
+            <% } %>
+        </div>
         <div class="row">
             <!-- Repeater para mostrar las tarjetas de las clases disponibles -->
-            <asp:Repeater ID="repeaterClasesDisponibles" runat="server">
+            <asp:Repeater ID="repeaterClasesDisponibles" runat="server" EnableViewState="false">
                 <ItemTemplate>
                     <div class="col-12">
                         <div class="card-horizontal">
@@ -49,6 +49,9 @@
                                 <h5 class="card-title"><%# Eval("Descripcion") %></h5>
                                 <div class="card-details">
                                     <div>
+                                        <p>
+                                            <img style="height:100px; width:100px; border-radius:80%;" src='<%# GetImageUrl(Eval("Id").ToString()) %>'>
+                                        </p>
                                         <p>Fecha y Hora: <%# Eval("FechaHorario", "{0:dd/MM/yyyy HH:mm}") %></p>
                                         <p>Capacidad: <%# Eval("Capacidad") %> personas</p>
                                         <p>Inscriptos: <%# Eval("Inscriptos") %></p>

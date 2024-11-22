@@ -314,6 +314,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\clases\" />
+    <Folder Include="Imagenes\perfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

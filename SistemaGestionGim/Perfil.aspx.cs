@@ -2,6 +2,7 @@
 using negocio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -30,6 +31,9 @@ namespace SistemaGestionGim
                 btnCancelarUsuario.Style["display"] = "none";
                 btnCancelar.Style["display"] = "inline-block";
                 btnConfirmarCambios.Style["display"] = "inline-block";
+
+                txtImagen.Style["display"] = "inline-block";
+                lblTxtImagen.Visible = true;
             }
 
 
@@ -40,9 +44,20 @@ namespace SistemaGestionGim
                     // Convertir la variable de sesión a un objeto Usuario
                     Usuario usuarioLogueado = (Usuario)Session["usuario"];
 
+                    string rutaImg = " ";
+                    rutaImg = Server.MapPath("~/Imagenes/perfiles/perfil-" + usuarioLogueado.Id + ".jpg");
+
+                    if (File.Exists(rutaImg))
+                    {
+                        imgPerfil.ImageUrl = "~/Imagenes/perfiles/perfil-" + usuarioLogueado.Id + ".jpg";
+                    }
+                    else
+                    {
+                        imgPerfil.ImageUrl = "~/Imagenes/perfiles/perfil-default.jpg";
+                    }
                     // Ahora puedes acceder a las propiedades del usuarioLogueado
-                    
-                    
+
+
                     if (Session["validacionModificacion"] != null)
                     {
                         txtConfirmarPassword.Attributes["value"] = (String)Session["Clave2"];
@@ -96,6 +111,9 @@ namespace SistemaGestionGim
             btnCancelarUsuario.Style["display"] = "none";
             btnCancelar.Style["display"] = "inline-block";
             btnConfirmarCambios.Style["display"] = "inline-block";
+            txtImagen.Style["display"] = "inline-block";
+            lblTxtImagen.Visible = true;
+
         }
 
         protected void GuardarCambios_Click(object sender, EventArgs e)
@@ -122,7 +140,7 @@ namespace SistemaGestionGim
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Session["validacionModificacion"] = null;
             Response.Redirect("Perfil.aspx");
         }
 
@@ -182,6 +200,7 @@ namespace SistemaGestionGim
                     Session["Clave"] = null;
                     Session["Email"] = null;
                     Session["validacionModificacion"] = null;
+                    guardarImagenPerfil();
                     Response.Redirect("Perfil.aspx");
                 }
                 else
@@ -218,5 +237,25 @@ namespace SistemaGestionGim
             Response.Redirect("Planes.aspx");
         }
 
+        protected void guardarImagenPerfil()
+        {
+            Usuario usuario = (Usuario)Session["usuario"];
+            try
+            {
+                string ruta = Server.MapPath("Imagenes/perfiles/");
+                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuario.Id + ".jpg");
+
+                Image img = (Image)Master.FindControl("imgPerfilMini");
+                img.ImageUrl = "~/Imagenes/perfiles/perfil-" + usuario.Id + ".jpg";
+                imgPerfil.ImageUrl = "~/Imagenes/perfiles/perfil-" + usuario.Id + ".jpg";
+
+                Response.Redirect("Perfil.aspx");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

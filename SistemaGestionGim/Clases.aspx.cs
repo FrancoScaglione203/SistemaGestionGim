@@ -2,6 +2,7 @@
 using negocio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -145,6 +146,19 @@ namespace SistemaGestionGim
 
             // Redirigir nuevamente a la página para actualizar la información mostrada
             Response.Redirect("Clases.aspx");
+        }
+
+        public string GetImageUrl(string claseId)
+        {
+            string rutaImg = Server.MapPath("~/Imagenes/clases/clase-" + claseId + ".jpg");
+            if (File.Exists(rutaImg))
+            {
+                return "/Imagenes/clases/clase-" + claseId + ".jpg";
+            }
+            else
+            {
+                return "/Imagenes/clases/clase-default.jpg";
+            }
         }
     }
 }
