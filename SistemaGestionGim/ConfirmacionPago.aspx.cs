@@ -51,19 +51,36 @@ namespace SistemaGestionGim
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
+
             PagoNegocio pagoNegocio = new PagoNegocio();
             Pago pago = new Pago();
+            int idCupon = 0;
+            if (Session["IdCupon"] != null)
+            {
+                idCupon = (int)Session["IdCupon"];
+            }
+            
             int importeFinal = int.Parse(lblImporteFinal.Text);
             if (Session["confirmacionPagoClase"] != null)
             {
                 pago = (Pago)Session["confirmacionPagoClase"];
+                if (Session["IdCupon"] != null)
+                {
+                    pago.Id_cupon = idCupon;
+                }
                 pagoNegocio.PagarClase(pago, importeFinal);
+                Session["IdCupon"] = null;
                 Response.Redirect("PagosCliente.aspx");
             }
             else
             {
                 pago = (Pago)Session["confirmacionPagoMensual"];
+                if (Session["IdCupon"] != null)
+                {
+                    pago.Id_cupon = idCupon;
+                }
                 pagoNegocio.PagarMes(pago, importeFinal);
+                Session["IdCupon"] = null;
                 Response.Redirect("PagosCliente.aspx");
             }
         }
@@ -97,7 +114,7 @@ namespace SistemaGestionGim
             if (cuponEncontrado != null)
             {
 
-
+                Session["IdCupon"] = cuponEncontrado.Id;
                 int importe = pago.Importe;
                 int descuento = 0;
                 decimal descuentoDecimal = cuponEncontrado.Descuento / 100m * importe;

@@ -475,10 +475,11 @@ namespace negocio
                 datos.setearParametro("@Mes", (object)nuevoPago.Mes ?? DBNull.Value); // Si Mes es null, se usa DBNull.Value
                 datos.setearParametro("@Anio", (object)nuevoPago.Anio ?? DBNull.Value); // Si Anio es null, se usa DBNull.Value                
                 datos.setearParametro("@ID_Usuario", nuevoPago.Id_usuario); // ID_Usuario no puede ser null, ya que es NOT NULL en la DB
-                datos.setearParametro("@ImporteFinal", importeFinal);                
-                
+                datos.setearParametro("@ImporteFinal", importeFinal);
+                datos.setearParametro("@ID_Cupon", nuevoPago.Id_cupon != null ? nuevoPago.Id_cupon : (object)DBNull.Value);
+
                 datos.ejecutarAccion(); // Ejecuta la acción sin retorno
-            }
+              }
             catch (Exception ex)
             {
                 throw new Exception("Error al modificar el pago", ex); // Manejo de excepciones
@@ -499,6 +500,7 @@ namespace negocio
                 datos.setearParametro("@ID_InscripcionClase",nuevoPago.Id_inscripcionClase); // Si Mes es null, se usa DBNull.Value         
                 datos.setearParametro("@ID_Usuario", nuevoPago.Id_usuario); // ID_Usuario no puede ser null, ya que es NOT NULL en la DB
                 datos.setearParametro("@ImporteFinal", importeFinal);
+                datos.setearParametro("@ID_Cupon", nuevoPago.Id_cupon);
 
                 datos.ejecutarAccion(); // Ejecuta la acción sin retorno
             }

@@ -49,7 +49,10 @@ namespace SistemaGestionGim
                 repeaterClases.Visible = false;
                 btnAgregarClase.Visible = false;
                 panelFormularioClase.Visible = true;
-                
+                lblTxtImagenClase.Visible = true;
+                txtImagenClase.Style["display"] = "inline-block";
+
+
 
             }
         }
@@ -75,6 +78,8 @@ namespace SistemaGestionGim
             repeaterClases.Visible = false;
             btnAgregarClase.Visible = false;
             panelFormularioClase.Visible = true;
+            lblTxtImagenClase.Visible = true;
+            txtImagenClase.Style["display"] = "inline-block";
         }
         protected String validarFechaHora(DateTime fechaHora)
         {
@@ -147,10 +152,13 @@ namespace SistemaGestionGim
 
 
                     claseNegocio.InsertarNuevo(nuevaClase);
+                    guardarImagenClase();
 
                     // Mostrar nuevamente el Repeater y ocultar el formulario
                     panelFormularioClase.Visible = false;
                     repeaterClases.Visible = true;
+                    lblTxtImagenClase.Visible=true;
+                    txtImagenClase.Style["display"] = "none";
                     // Refrescar la lista de clases
                     //CargarClases();
 
@@ -237,6 +245,27 @@ namespace SistemaGestionGim
             claseNegocio.Modificar(clase);
 
             Response.Redirect("ClasesAdmin.aspx");
+        }
+
+        protected void guardarImagenClase()
+        {
+            ClaseNegocio claseNegocio = new ClaseNegocio();
+            listaClases = claseNegocio.listarClases();
+
+            int nuevoId = listaClases.Count > 0 ? listaClases.Max(c => c.Id) : 1;
+
+            string ruta = Server.MapPath("Imagenes/clases/");
+            txtImagenClase.PostedFile.SaveAs(ruta + "clase-" + nuevoId + ".jpg");
+
+
+
+
+            //string ruta = Server.MapPath("./Imagenes/");
+            //txtImagen.PostedFile.SaveAs(ruta + "clase-" + nuevoId + ".jpg");
+            ////txtImagen.PostedFile
+
+            //imgClase.ImageUrl = "~/Imagenes/clase-" + nuevoId + ".jpg";
+
         }
     }
 }

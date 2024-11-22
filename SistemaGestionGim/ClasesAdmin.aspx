@@ -28,16 +28,30 @@
             gap: 10px;
         }
     </style>
+    <script>
+        // Función para mostrar la vista previa de la imagen seleccionada
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // Cambiar la URL de la imagen de vista previa
+                    const imgPreview = document.getElementById('<%= imgClase.ClientID %>');
+                    imgPreview.src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- Botón para mostrar el formulario de agregar clase -->
-    
+
     <div class="container">
         <div>
-    <asp:Button Text="Agregar clase" CssClass="btn btn-primary w-50 p-3 mt-4 mb-2" runat="server" ID="btnAgregarClase" OnClick="btnAgregarClase_Click" />
-</div>
+            <asp:Button Text="Agregar clase" CssClass="btn btn-primary w-50 p-3 mt-4 mb-2" runat="server" ID="btnAgregarClase" OnClick="btnAgregarClase_Click" />
+        </div>
         <h2 class="mt-4">Administrar Clases</h2>
         <div class="row">
             <!-- Repeater para mostrar las tarjetas de las clases -->
@@ -97,6 +111,24 @@
                     <div class="form-floating mb-3">
                         <asp:TextBox runat="server" CssClass="form-control" ID="txtImporte" TextMode="Number" />
                         <label for="txtImporte" class="form-label">Importe</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <h6 class="fw-bold my-3">Imagen de clase</h6>
+                        <asp:UpdatePanel ID="UpdatePanel10" runat="server">
+                            <ContentTemplate>
+                                <div class="mb-3">
+                                    <asp:Label class="form-label" runat="server" ID="lblTxtImagenClase" Visible="false">Seleccionar Imagen</asp:Label>
+                                    <!-- Campo de carga de archivos -->
+                                    <input type="file" id="txtImagenClase" runat="server" class="form-control" style="display: none" accept="image/*" onchange="previewImage(this)" />
+                                </div>
+
+                                <!-- Imagen de vista previa -->
+                                <asp:Image ID="imgClase" Style="height: 150px; width: 150px; border-radius: 50%;"
+                                    ImageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" runat="server" class="my-3" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                        <!-- Botón para actualizar vista previa -->
                     </div>
 
                     <div class="mt-3">

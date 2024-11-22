@@ -54,7 +54,7 @@
           <%--<asp:Label ID="lblRecuperoClave" runat="server" CssClass="btn btn-light border-0 w-50 p-3" Text="Olvidé mi contraseña" />--%>
           <div class="text-center my-2">
 
-              <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+              <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 
               <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                   <ContentTemplate>
