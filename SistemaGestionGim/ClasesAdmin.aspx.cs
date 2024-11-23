@@ -2,6 +2,7 @@
 using negocio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -184,10 +185,6 @@ namespace SistemaGestionGim
                     Session["validacionClase"] = valFechaHora;
                     Response.Redirect("ClasesAdmin.aspx");
 
-
-
-                    // Mostrar un mensaje de error si la fecha y hora son inválidas
-                    // Puedes usar un Label en el front para mostrar el mensaje
                 }
                 
             }
@@ -257,15 +254,19 @@ namespace SistemaGestionGim
             string ruta = Server.MapPath("Imagenes/clases/");
             txtImagenClase.PostedFile.SaveAs(ruta + "clase-" + nuevoId + ".jpg");
 
+        }
 
-
-
-            //string ruta = Server.MapPath("./Imagenes/");
-            //txtImagen.PostedFile.SaveAs(ruta + "clase-" + nuevoId + ".jpg");
-            ////txtImagen.PostedFile
-
-            //imgClase.ImageUrl = "~/Imagenes/clase-" + nuevoId + ".jpg";
-
+        public string GetImageUrl(string claseId)
+        {
+            string rutaImg = Server.MapPath("~/Imagenes/clases/clase-" + claseId + ".jpg");
+            if (File.Exists(rutaImg))
+            {
+                return "/Imagenes/clases/clase-" + claseId + ".jpg";
+            }
+            else
+            {
+                return "/Imagenes/clases/clase-default.jpg";
+            }
         }
     }
 }

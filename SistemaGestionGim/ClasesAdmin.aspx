@@ -41,7 +41,7 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-</script>
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -63,6 +63,9 @@
                                 <h5 class="card-title"><%# Eval("Descripcion") %></h5>
                                 <div class="card-details">
                                     <div>
+                                        <p>
+                                            <img style="height: 100px; width: 100px; border-radius: 80%;" src='<%# GetImageUrl(Eval("Id").ToString()) %>'>
+                                        </p>
                                         <p>Fecha y Hora: <%# Eval("FechaHorario", "{0:dd/MM/yyyy HH:mm}") %></p>
                                         <p>Capacidad: <%# Eval("Capacidad") %> personas</p>
                                         <p>Importe: $<%# Eval("Importe") %></p>
