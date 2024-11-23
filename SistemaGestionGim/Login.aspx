@@ -48,7 +48,7 @@
                   <label class="form-check-label" for="exampleCheck1">Recordar sesión</label>
               </div>
               <div>
-                  <a class="nav-item nav-link" href="recuperoClave.aspx">Recuperar contraseña</a>
+                  <a class="nav-item nav-link" href="RecuperoClave.aspx">Recuperar contraseña</a>
               </div>
           </div>
           <%--<asp:Label ID="lblRecuperoClave" runat="server" CssClass="btn btn-light border-0 w-50 p-3" Text="Olvidé mi contraseña" />--%>

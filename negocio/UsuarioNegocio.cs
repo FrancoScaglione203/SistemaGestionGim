@@ -16,7 +16,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT Id, Nombre, Apellido, Email, Activo FROM Usuarios";
+                string consulta = "SELECT Id, Nombre, Apellido, Email, ID_Plan, Activo FROM Usuarios";
                 datos.setearConsulta(consulta);
 
                 datos.ejecutarLectura();
@@ -27,6 +27,7 @@ namespace negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Email = (string)datos.Lector["Email"];
+                    aux.Id_plan = (int)datos.Lector["ID_Plan"];
                     aux.Activo = (bool)(datos.Lector["Activo"]);
 
                     lista.Add(aux);

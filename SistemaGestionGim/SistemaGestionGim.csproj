@@ -123,6 +123,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Cupones.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="EmailRecuperoExitoso.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -130,8 +131,10 @@
     <Content Include="PagosCliente.aspx" />
     <Content Include="Perfil.aspx" />
     <Content Include="Planes.aspx" />
+    <Content Include="RecuperoClave.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RegisterExitoso.aspx" />
+    <Content Include="RestablecerClave.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -244,6 +247,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmailRecuperoExitoso.aspx.cs">
+      <DependentUpon>EmailRecuperoExitoso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmailRecuperoExitoso.aspx.designer.cs">
+      <DependentUpon>EmailRecuperoExitoso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -290,6 +300,13 @@
       <DependentUpon>Planes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecuperoClave.aspx.cs">
+      <DependentUpon>RecuperoClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperoClave.aspx.designer.cs">
+      <DependentUpon>RecuperoClave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -303,6 +320,13 @@
     </Compile>
     <Compile Include="RegisterExitoso.aspx.designer.cs">
       <DependentUpon>RegisterExitoso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RestablecerClave.aspx.cs">
+      <DependentUpon>RestablecerClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RestablecerClave.aspx.designer.cs">
+      <DependentUpon>RestablecerClave.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
