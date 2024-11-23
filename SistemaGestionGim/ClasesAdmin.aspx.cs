@@ -68,8 +68,8 @@ namespace SistemaGestionGim
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             int idClase = int.Parse(((Button)sender).CommandArgument);
-            // Redirigir a una página de edición con el ID de la clase
-            //Response.Redirect($"EditarClase.aspx?id={idClase}");
+            Session["IdClasesInscriptos"] = idClase;
+            Response.Redirect("InscriptosXClase.aspx");
         }
 
 

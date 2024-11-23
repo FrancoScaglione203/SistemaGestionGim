@@ -27,6 +27,8 @@ namespace SistemaGestionGim
             {
                 Response.Redirect("Login.aspx");
             }
+            CargarClasesDisponibles();
+            //CargarClasesInscriptas();
         }
 
 
