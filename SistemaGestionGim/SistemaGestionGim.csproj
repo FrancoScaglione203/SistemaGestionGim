@@ -126,6 +126,7 @@
     <Content Include="EmailRecuperoExitoso.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="InscriptosXClase.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Pagos.aspx" />
     <Content Include="PagosCliente.aspx" />
@@ -256,6 +257,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InscriptosXClase.aspx.cs">
+      <DependentUpon>InscriptosXClase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InscriptosXClase.aspx.designer.cs">
+      <DependentUpon>InscriptosXClase.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

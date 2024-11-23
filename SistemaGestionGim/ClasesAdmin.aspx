@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 <div class="card-actions">
-                                    <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-primary"
+                                    <asp:Button ID="btnEditar" runat="server" Text="Inscriptos" CssClass="btn btn-primary"
                                         CommandArgument='<%# Eval("Id") %>' OnClick="btnEditar_Click" />
                                     <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger"
                                         CommandArgument='<%# Eval("Id") %>' OnClick="btnEliminar_Click" />
