@@ -192,7 +192,8 @@ namespace negocio
                 {
                     // Mapear los resultados a la clase Usuario
                     usuario.Id = (int)datos.Lector["Id"];
-                    usuario.tipoUsuario = (int)(datos.Lector["TipoUsuario"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+                    usuario.Id_tipoUsuario = (int)datos.Lector["TipoUsuario"];
+                    usuario.tipoUsuario = (int)(datos.Lector["TipoUsuario"]) == 1 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
                     usuario.Nombre = datos.Lector["Nombre"].ToString();
                     usuario.Apellido = datos.Lector["Apellido"].ToString();
                     usuario.Id_plan = (int)datos.Lector["Id_Plan"];

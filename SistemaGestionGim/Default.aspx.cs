@@ -23,10 +23,52 @@ namespace SistemaGestionGim
 
             if (!IsPostBack)
             {
-                UsuarioNegocio negocio = new UsuarioNegocio();
-                Session.Add("listaUsuarios", negocio.listarUsuarios());
-                dgvUsuarios.DataSource = Session["listaUsuarios"];
-                dgvUsuarios.DataBind();
+                InscripcionClaseNegocio inscripcionClaseNegocio = new InscripcionClaseNegocio();
+
+                ClaseNegocio claseNegocio = new ClaseNegocio();
+                List<Clase> clases = new List<Clase>();
+                clases = claseNegocio.listarClases();
+
+                List<Clase> clasesHoy = new List<Clase>();
+                List<Clase> clasesMan = new List<Clase>();
+                DateTime fechaHoy = DateTime.Today;
+                DateTime fechaManana = fechaHoy.AddDays(1);
+
+                clasesHoy = clases.Where(c => c.FechaHorario.Date == fechaHoy).ToList();
+                clasesMan = clases.Where(c => c.FechaHorario.Date == fechaManana).ToList();
+
+                var clasesDisponiblesHoy = clasesHoy
+               .Select(clase => new
+               {
+                   Id = clase.Id,
+                   Descripcion = clase.Descripcion,
+                   FechaHorario = clase.FechaHorario,
+                   Capacidad = clase.Capacidad,
+                   Importe = clase.Importe,
+                   Activo = clase.Activo,
+                   Inscriptos = inscripcionClaseNegocio.InscriptosXclase(clase.Id) // Obtener la cantidad de inscriptos para cada clase.
+               })
+               .ToList();
+
+                var clasesDisponiblesMan = clasesMan
+               .Select(clase => new
+               {
+                   Id = clase.Id,
+                   Descripcion = clase.Descripcion,
+                   FechaHorario = clase.FechaHorario,
+                   Capacidad = clase.Capacidad,
+                   Importe = clase.Importe,
+                   Activo = clase.Activo,
+                   Inscriptos = inscripcionClaseNegocio.InscriptosXclase(clase.Id) // Obtener la cantidad de inscriptos para cada clase.
+               })
+               .ToList();
+
+
+                repeaterClasesHoy.DataSource = clasesDisponiblesHoy;
+                repeaterClasesHoy.DataBind();
+
+                repeaterClasesMañana.DataSource = clasesDisponiblesMan;
+                repeaterClasesMañana.DataBind();
             }
 
         }

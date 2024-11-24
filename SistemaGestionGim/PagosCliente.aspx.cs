@@ -13,23 +13,21 @@ namespace SistemaGestionGim
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //if (Session["usuario"] != null)
-            //{
-            if (!IsPostBack)
+            if (Session["usuario"] != null)
             {
-                CargarPagosMensuales(); // Cargar pagos mensuales por defecto
-                CargarPagosPorClase();  // Cargar pagos por clase por defecto
-                CargarPagosNoMensuales(); // Cargar pagos mensuales por defecto
-                CargarPagosNoPorClase();  // Cargar pagos por clase por defecto
+                if (!IsPostBack)
+                {
+                    CargarPagosMensuales(); // Cargar pagos mensuales por defecto
+                    CargarPagosPorClase();  // Cargar pagos por clase por defecto
+                    CargarPagosNoMensuales(); // Cargar pagos mensuales por defecto
+                    CargarPagosNoPorClase();  // Cargar pagos por clase por defecto
 
+                }
             }
-            //}
-            //else
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
-
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
 
         private void CargarPagosMensuales()

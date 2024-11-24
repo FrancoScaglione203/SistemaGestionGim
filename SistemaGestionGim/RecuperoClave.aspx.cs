@@ -43,8 +43,14 @@ namespace SistemaGestionGim
                 emailService.correoRecuperarClave(lista[0].Nombre, lista[0].Email, "Recuperar contraseña", plantilla1);
                 emailService.enviarMail();
                 Session["idRecuperoClave"] = id;
+                Session["validacionMail"] = null;
 
                 Response.Redirect("EmailRecuperoExitoso.aspx");
+            }
+            else
+            {
+                Session["validacionMail"] = "No existe un usuario creado con esa direccion de email";
+                return;
             }
 
             

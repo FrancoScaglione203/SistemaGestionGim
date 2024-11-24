@@ -60,7 +60,13 @@
                         <% if ((Session["validacionModificacion"] != null))
                             { %>
                         <label for="txtClave2" class="text-danger form-label"><%= Session["validacionModificacion"] %></label>
-                        <% } %>
+                        <% }
+                            if ((Session["confirmacionModificacion"] != null))
+                            {%>
+                        <label for="txtClave2" class="text-danger form-label"><%= Session["confirmacionModificacion"] %></label>
+                       <% Session["confirmacionModificacion"] = null;
+                        } %>
+
                     </div>
                 </div>
             </div>
@@ -76,10 +82,10 @@
                     <ContentTemplate>
                         <div class="mb-3">
                             <asp:Label class="form-label" runat="server" ID="lblTxtImagen" Visible="false">Seleccionar Imagen</asp:Label>
-                            <input type="file" id="txtImagen" runat="server" class="form-control" style="display: none" />
+                            <input type="file" id="txtImagen" runat="server" class="form-control" style="display: none"/>
                         </div>
 
-                        <asp:Image ID="imgPerfil" Style="height: 150px; width: 150px; border-radius: 50%;" 
+                        <asp:Image ID="imgPerfil" Style="height: 150px; width: 150px; border-radius: 50%;"
                             ImageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" runat="server" class="my-3" />
                     </ContentTemplate>
                 </asp:UpdatePanel>

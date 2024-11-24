@@ -136,6 +136,11 @@ namespace SistemaGestionGim
 
             lblDdlCriterioMensual.Visible = false;
             ddlCriterioMensual.Visible = false;
+
+            ddlPagosMensual.Items.Clear();
+            ddlPagosMensual.Items.Add("Todos");
+            ddlPagosMensual.Items.Add("Si");
+            ddlPagosMensual.Items.Add("No");
         }
 
         protected void ddlCampoMensual_SelectedIndexChanged(object sender, EventArgs e)
@@ -365,6 +370,11 @@ namespace SistemaGestionGim
 
             lblDdlCriterioClase.Visible = false;
             ddlCriterioClase.Visible = false;
+
+            ddlPagosClase.Items.Clear();
+            ddlPagosClase.Items.Add("Todos");
+            ddlPagosClase.Items.Add("Si");
+            ddlPagosClase.Items.Add("No");
         }
 
         protected void ddlCampoClase_SelectedIndexChanged(object sender, EventArgs e)

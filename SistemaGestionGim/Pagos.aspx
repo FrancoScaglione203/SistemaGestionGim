@@ -64,8 +64,7 @@
                             <asp:ListItem Text="11" />
                             <asp:ListItem Text="12" />
                         </asp:DropDownList>
-                    </div>
-                    <div class="col-md-4">
+                  
                         <asp:Label Text="Año" ID="lblDdlAnioMensual" runat="server" Visible="false" />
                         <asp:DropDownList ID="ddlAnioMensual" AutoPostBack="true" runat="server" CssClass="form-control" Visible="false">
                             <asp:ListItem Text="2024" />
@@ -96,7 +95,7 @@
                     </div>
 
                     <div class="col-md-9">
-                        <asp:Button ID="btnBorrarFiltroMensual" runat="server" Text="Borrar Filtro" CssClass="btn btn-secondary" OnClick="btnBorrarFiltroMensual_Click" />
+                        <asp:Button ID="btnBorrarFiltroMensual" runat="server" Text="Limpiar Filtro" CssClass="btn btn-secondary" OnClick="btnBorrarFiltroMensual_Click" />
                     </div>
 
                     <div class="col-md-2">
@@ -168,8 +167,7 @@
                             <asp:ListItem Text="11" />
                             <asp:ListItem Text="12" />
                         </asp:DropDownList>
-                    </div>
-                    <div class="col-md-4">
+
                         <asp:Label Text="Año" ID="lblDdlAnioClase" runat="server" Visible="false" />
                         <asp:DropDownList ID="ddlAnioClase" AutoPostBack="true" runat="server" CssClass="form-control" Visible="false">
                             <asp:ListItem Text="2024" />
@@ -200,7 +198,7 @@
                     </div>
 
                     <div class="col-md-9">
-                        <asp:Button ID="btnBorrarFiltroClase" runat="server" Text="Borrar Filtro" CssClass="btn btn-secondary" OnClick="btnBorrarFiltroClase_Click" />
+                        <asp:Button ID="btnBorrarFiltroClase" runat="server" Text="Limpiar Filtro" CssClass="btn btn-secondary" OnClick="btnBorrarFiltroClase_Click" />
                     </div>
 
                     <div class="col-md-2">
