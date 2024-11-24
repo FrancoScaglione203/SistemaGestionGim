@@ -201,6 +201,7 @@ namespace SistemaGestionGim
                     Session["Email"] = null;
                     Session["validacionModificacion"] = null;
                     guardarImagenPerfil();
+                    Session["confirmacionModificacion"] = "Los datos se modificaron correctamente";
                     Response.Redirect("Perfil.aspx");
                 }
                 else
@@ -249,6 +250,7 @@ namespace SistemaGestionGim
                 img.ImageUrl = "~/Imagenes/perfiles/perfil-" + usuario.Id + ".jpg";
                 imgPerfil.ImageUrl = "~/Imagenes/perfiles/perfil-" + usuario.Id + ".jpg";
 
+                Session["confirmacionModificacion"] = "Los datos se modificaron correctamente";
                 Response.Redirect("Perfil.aspx");
             }
             catch (Exception)

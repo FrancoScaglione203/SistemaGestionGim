@@ -104,6 +104,7 @@ namespace SistemaGestionGim
 
             Session["usuario"] = usuarioCambioPlan;
             Session["idPlanNuevo"] = null;
+            Session["validacionPlan"] = null;
             Response.Redirect("Planes.aspx");
 
         }
