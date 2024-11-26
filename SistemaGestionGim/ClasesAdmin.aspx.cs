@@ -53,8 +53,6 @@ namespace SistemaGestionGim
                 lblTxtImagenClase.Visible = true;
                 txtImagenClase.Style["display"] = "inline-block";
 
-
-
             }
         }
 
@@ -135,58 +133,70 @@ namespace SistemaGestionGim
                 // Validar que la fecha y hora no sean anteriores al momento actual
                 String valFechaHora = validarFechaHora(fechaHorario);
 
-                if (valFechaHora == null)
-                {
-
-
-                    // Crear una nueva instancia de la clase para guardar
-                    Clase nuevaClase = new Clase
+                if(int.Parse(txtCapacidad.Text) <= 10 && int.Parse(txtCapacidad.Text) >= 1)
+                { 
+                    if (valFechaHora == null)
                     {
-                        Descripcion = txtDescripcion.Text,
-                        FechaHorario = fechaHorario,
-                        Capacidad = int.Parse(txtCapacidad.Text),
-                        Importe = int.Parse(txtImporte.Text),
-                    };
-
-                    // Lógica para guardar la nueva clase (insertar en la base de datos)
-                    ClaseNegocio claseNegocio = new ClaseNegocio();
 
 
-                    claseNegocio.InsertarNuevo(nuevaClase);
-                    guardarImagenClase();
+                        // Crear una nueva instancia de la clase para guardar
+                        Clase nuevaClase = new Clase
+                        {
+                            Descripcion = txtDescripcion.Text,
+                            FechaHorario = fechaHorario,
+                            Capacidad = int.Parse(txtCapacidad.Text),
+                            Importe = int.Parse(txtImporte.Text),
+                        };
 
-                    // Mostrar nuevamente el Repeater y ocultar el formulario
-                    panelFormularioClase.Visible = false;
-                    repeaterClases.Visible = true;
-                    lblTxtImagenClase.Visible=true;
-                    txtImagenClase.Style["display"] = "none";
-                    // Refrescar la lista de clases
-                    //CargarClases();
-
-                    Session["validacionClase"] = null;
-                    Session["Descripcion"] = null;
-                    Session["Fecha"] = null;
-                    Session["Hora"] = null;
-                    Session["Capacidad"] = null;
-                    Session["Importe"] = null;
-                    Session["validacionClase"] = null;
-                    Response.Redirect("ClasesAdmin.aspx");
+                        // Lógica para guardar la nueva clase (insertar en la base de datos)
+                        ClaseNegocio claseNegocio = new ClaseNegocio();
 
 
+                        claseNegocio.InsertarNuevo(nuevaClase);
+                        guardarImagenClase();
+
+                        // Mostrar nuevamente el Repeater y ocultar el formulario
+                        panelFormularioClase.Visible = false;
+                        repeaterClases.Visible = true;
+                        lblTxtImagenClase.Visible=true;
+                        txtImagenClase.Style["display"] = "none";
+                        // Refrescar la lista de clases
+                        //CargarClases();
+
+                        Session["validacionClase"] = null;
+                        Session["Descripcion"] = null;
+                        Session["Fecha"] = null;
+                        Session["Hora"] = null;
+                        Session["Capacidad"] = null;
+                        Session["Importe"] = null;
+                        Session["validacionClase"] = null;
+                        Response.Redirect("ClasesAdmin.aspx");
+
+
+
+                    }
+                    else
+                    {
+                        Session["validacionClase"] = valFechaHora;
+                        Session["Descripcion"] = txtDescripcion.Text;
+                        Session["Fecha"] = txtFecha.Text;
+                        Session["Hora"] = txtHora.Text;
+                        Session["Capacidad"] = txtCapacidad.Text;
+                        Session["Importe"] = txtImporte.Text;
+                        Session["validacionClase"] = valFechaHora;
+                        Response.Redirect("ClasesAdmin.aspx");
+                    }
                 }
-                else
+                else 
                 {
-                    Session["validacionClase"] = valFechaHora;
+                    Session["validacionClase"] = "La capacidad maxima del salon es de 10 personas";
                     Session["Descripcion"] = txtDescripcion.Text;
                     Session["Fecha"] = txtFecha.Text;
                     Session["Hora"] = txtHora.Text;
                     Session["Capacidad"] = txtCapacidad.Text;
                     Session["Importe"] = txtImporte.Text;
-                    Session["validacionClase"] = valFechaHora;
                     Response.Redirect("ClasesAdmin.aspx");
-
                 }
-                
             }
             catch (Exception ex)
             {

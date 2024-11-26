@@ -8,7 +8,7 @@
 
         <div class="col-5 text-center">
 
-            <img class="my-3" src="https://myrenault.com.ar/vendor/template/assets/img/renault_black.svg" alt="Renault" style="height: 9em;" />
+            <img class="my-3" src="https://cdn-icons-png.flaticon.com/512/69/69840.png" style="height: 9em;" />
 
           
 

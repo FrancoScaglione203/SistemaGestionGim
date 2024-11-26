@@ -33,6 +33,7 @@
     <div class="container">
 
         <h2 class="mt-4">Clases Disponibles</h2>
+        <asp:Button ID="btnOcultarClasesDisp" runat="server" Text="Ocultar lista de clases disponibles" CssClass="btn btn-primary" OnClick="btnOcultarClasesDisp_Click" />
         <div>
             <% if ((Session["validacionInscripcion"] != null))
                 { %>
@@ -71,6 +72,7 @@
         </div>
 
         <h2 class="mt-4">Mis Clases Inscriptas</h2>
+        <asp:Button ID="btnOcultarClasesInsc" runat="server" Text="Ocultar lista de clases inscriptas" CssClass="btn btn-primary" OnClick="btnOcultarClasesInsc_Click" />
         <div class="row">
             <!-- Repeater para mostrar las tarjetas de las clases en las que el usuario está inscrito -->
             <asp:Repeater ID="repeaterClasesInscriptas" runat="server">

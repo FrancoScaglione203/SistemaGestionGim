@@ -8,10 +8,10 @@
 
         <div class="col-5 text-center">
 
-            <img class="my-3" src="https://myrenault.com.ar/vendor/template/assets/img/renault_black.svg" alt="Renault" style="height: 9em;" />
+            <img class="my-3" src="https://cdn-icons-png.flaticon.com/512/69/69840.png" alt="gimnasio" style="height: 9em;" />
 
-            <h6 class="fw-bold my-3">Bienvenido a MY RENAULT</h6>
-            <h6 class="fw-bold my-3">Donde quiera que vayas, disfrutá los beneficios</h6>
+            <h6 class="fw-bold my-3">Bienvenido a GALATAS GIMNASIO</h6>
+            <h6 class="fw-bold my-3">Nuestra prioridad sos vos!</h6>
 
             <div class="form-floating my-3">
                 <asp:TextBox runat="server" CssClass="form-control" ID="txtClave1" type="password" />

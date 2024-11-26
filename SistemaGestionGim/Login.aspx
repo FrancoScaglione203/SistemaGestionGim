@@ -9,10 +9,12 @@
 
       <div class="col-5">
 
-          <img class="my-3" src="https://myrenault.com.ar/vendor/template/assets/img/renault_black.svg" alt="Renault" style="height: 9em;" />
+          <div class="text-center">
+    <img class="my-3 mx-auto d-block" src="https://cdn-icons-png.flaticon.com/512/69/69840.png" alt="gimnasio" style="height: 9em;" />
+</div>
 
-          <h6 class="fw-bold my-3 text-center">Bienvenido a MY RENAULT</h6>
-          <h6 class="fw-bold my-3 text-center">Donde quiera que vayas, disfrutá los beneficios</h6>
+          <h6 class="fw-bold my-3 text-center">Bienvenido a GALATAS GIMNASIO</h6>
+          <h6 class="fw-bold my-3 text-center">Nuestra prioridad sos vos!</h6>
 
           <div class="form-floating my-4">
               <asp:TextBox runat="server" CssClass="form-control" ID="txtEmail" type="email" />
@@ -43,9 +45,7 @@
           </div>
           <div class="d-flex justify-content-between">
               <div class="form-group form-check">
-                  <input id="Checkbox1" type="checkbox" cssclass="form-check-input" />
-                  <%--       <input type="checkbox" class="form-check-input" id="exampleCheck1">--%>
-                  <label class="form-check-label" for="exampleCheck1">Recordar sesión</label>
+
               </div>
               <div>
                   <a class="nav-item nav-link" href="RecuperoClave.aspx">Recuperar contraseña</a>

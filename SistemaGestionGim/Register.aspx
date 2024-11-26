@@ -105,8 +105,7 @@
                             <ItemTemplate>
                                 <div class="col-md-4">
                                     <!-- Cada tarjeta ocupará 4 columnas -->
-                                    <div class="card my-4">
-                                        <img class="card-img-top img-concesionaria" src=" " alt="<%# Eval("Descripcion") %>">
+                                    <div class="card my-4">                                     
                                         <div class="card-body">
                                             <h5 class="card-title"><%# Eval("Descripcion") %></h5>
                                             <p class="card-text">

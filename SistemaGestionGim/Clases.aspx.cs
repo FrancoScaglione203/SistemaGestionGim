@@ -162,5 +162,37 @@ namespace SistemaGestionGim
                 return "/Imagenes/clases/clase-default.jpg";
             }
         }
+
+        protected void btnOcultarClasesDisp_Click(object sender, EventArgs e)
+        {
+            if (Session["listaDisponibles"] == null)
+            {
+                repeaterClasesDisponibles.Visible = false;
+                btnOcultarClasesDisp.Text = "Mostar lista de clases disponibles";
+                Session["listaDisponibles"] = 1;
+            }
+            else
+            {
+                repeaterClasesDisponibles.Visible = true;
+                btnOcultarClasesDisp.Text = "Ocultar lista de clases disponibles";
+                Session["listaDisponibles"] = null;
+            }          
+        }
+
+        protected void btnOcultarClasesInsc_Click(object sender, EventArgs e)
+        {
+            if (Session["listaInscriptas"] == null)
+            {
+                repeaterClasesInscriptas.Visible = false;
+                btnOcultarClasesInsc.Text = "Mostar lista de clases inscriptas";
+                Session["listaInscriptas"] = 1;
+            }
+            else
+            {
+                repeaterClasesInscriptas.Visible = true;
+                btnOcultarClasesInsc.Text = "Ocultar lista de clases inscriptas";
+                Session["listaInscriptas"] = null;
+            }
+        }
     }
 }
