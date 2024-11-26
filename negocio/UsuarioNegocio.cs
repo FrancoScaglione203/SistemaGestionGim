@@ -16,7 +16,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT Id, Nombre, Apellido, Email, ID_Plan, Activo FROM Usuarios";
+                string consulta = "SELECT Id, Nombre, Apellido, Email, TipoUsuario, ID_Plan, Activo FROM Usuarios";
                 datos.setearConsulta(consulta);
 
                 datos.ejecutarLectura();
@@ -28,6 +28,7 @@ namespace negocio
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Email = (string)datos.Lector["Email"];
                     aux.Id_plan = (int)datos.Lector["ID_Plan"];
+                    aux.Id_tipoUsuario = (int)datos.Lector["TipoUsuario"];
                     aux.Activo = (bool)(datos.Lector["Activo"]);
 
                     lista.Add(aux);
@@ -113,7 +114,7 @@ namespace negocio
                 datos.setearProcedimiento("ModificarUsuario"); // Asegúrate de que el procedimiento almacenado esté correctamente configurado
                 datos.setearParametro("@id", nuevo.Id); // Asegúrate de que el ID del usuario se establezca correctamente
                 datos.setearParametro("@clave", nuevo.clave);
-                datos.setearParametro("@TipoUsuario", nuevo.tipoUsuario);
+                datos.setearParametro("@TipoUsuario", nuevo.Id_tipoUsuario);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
                 datos.setearParametro("@Apellido", nuevo.Apellido);
                 datos.setearParametro("@Email", nuevo.Email);
