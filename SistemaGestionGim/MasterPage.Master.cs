@@ -28,6 +28,7 @@ namespace SistemaGestionGim
                 lblNomreUsuario.Text = nombreUsuario;
                 lblNomreUsuario.Visible = true;
                 imgPerfilMini.Visible = true;
+                InicioLink.Visible = true;
                 PlanesLink.Visible = true;
                 ClasesLink.Visible = true;
                 PerfilLink.Visible = true;

@@ -35,7 +35,6 @@
                         <asp:Label Text="Campo" runat="server" />
                         <asp:DropDownList ID="ddlCampoMensual" AutoPostBack="true" runat="server" CssClass="form-control" OnSelectedIndexChanged="ddlCampoMensual_SelectedIndexChanged">
                             <asp:ListItem Text="-" />
-                            <asp:ListItem Text="Nombre clase" />
                             <asp:ListItem Text="Apellido usuario" />
                             <asp:ListItem Text="Fecha" />
                         </asp:DropDownList>
