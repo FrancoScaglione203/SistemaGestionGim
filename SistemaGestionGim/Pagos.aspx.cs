@@ -444,9 +444,9 @@ namespace SistemaGestionGim
                 ddlAnioClase.Items.Add("2021");
                 ddlAnioClase.Items.Add("2020");
             }
-            else if (ddlCriterioMensual.SelectedItem.ToString() == "Mes")
+            else if (ddlCriterioClase.SelectedItem.ToString() == "Mes")
             {
-                lblDdlAnioMensual.Visible = false;
+                lblDdlAnioClase.Visible = false;
                 ddlAnioClase.Visible = false;
                 lblDdlMesClase.Visible = true;
                 ddlMesClase.Visible = true;
@@ -464,7 +464,7 @@ namespace SistemaGestionGim
                 ddlMesClase.Items.Add("11");
                 ddlMesClase.Items.Add("12");
             }
-            else if (ddlCriterioMensual.SelectedItem.ToString() == "Año")
+            else if (ddlCriterioClase.SelectedItem.ToString() == "Año")
             {
                 lblDdlMesClase.Visible = false;
                 ddlMesClase.Visible = false;

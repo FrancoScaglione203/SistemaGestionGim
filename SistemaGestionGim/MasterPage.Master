@@ -49,6 +49,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-lg-auto">
+                        <asp:HyperLink ID="InicioLink" runat="server" CssClass="nav-item nav-link text-white" NavigateUrl="Default.aspx" Text="Inicio" Visible="false"></asp:HyperLink>
                         <asp:HyperLink ID="PlanesLink" runat="server" CssClass="nav-item nav-link text-white" NavigateUrl="Planes.aspx" Text="Planes" Visible="false"></asp:HyperLink>
                         <asp:HyperLink ID="ClasesLink" runat="server" CssClass="nav-item nav-link text-white" NavigateUrl="Clases.aspx" Text="Clases" Visible="false"></asp:HyperLink>
                         <asp:HyperLink ID="PerfilLink" runat="server" CssClass="nav-item nav-link text-white" NavigateUrl="Perfil.aspx" Text="Perfil" Visible="false"></asp:HyperLink>
