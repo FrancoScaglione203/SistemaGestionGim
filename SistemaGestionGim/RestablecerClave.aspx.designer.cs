@@ -11,34 +11,52 @@ namespace SistemaGestionGim
 {
 
 
-    public partial class Default
+    public partial class RestablecerClave
     {
 
         /// <summary>
-        /// repeaterClasesHoy control.
+        /// txtClave1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterClasesHoy;
+        protected global::System.Web.UI.WebControls.TextBox txtClave1;
 
         /// <summary>
-        /// repeaterClasesMañana control.
+        /// vClave1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterClasesMañana;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator vClave1;
 
         /// <summary>
-        /// lblNovedades control.
+        /// txtClave2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNovedades;
+        protected global::System.Web.UI.WebControls.TextBox txtClave2;
+
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+
+        /// <summary>
+        /// btnConfirmar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmar;
     }
 }

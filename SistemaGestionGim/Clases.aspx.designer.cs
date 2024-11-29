@@ -11,34 +11,43 @@ namespace SistemaGestionGim
 {
 
 
-    public partial class Default
+    public partial class Clases
     {
 
         /// <summary>
-        /// repeaterClasesHoy control.
+        /// btnOcultarClasesDisp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterClasesHoy;
+        protected global::System.Web.UI.WebControls.Button btnOcultarClasesDisp;
 
         /// <summary>
-        /// repeaterClasesMañana control.
+        /// repeaterClasesDisponibles control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterClasesMañana;
+        protected global::System.Web.UI.WebControls.Repeater repeaterClasesDisponibles;
 
         /// <summary>
-        /// lblNovedades control.
+        /// btnOcultarClasesInsc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNovedades;
+        protected global::System.Web.UI.WebControls.Button btnOcultarClasesInsc;
+
+        /// <summary>
+        /// repeaterClasesInscriptas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repeaterClasesInscriptas;
     }
 }
